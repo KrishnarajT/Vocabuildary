@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  vocab_bot:
+    build: .
+    container_name: vocab_bot
+    environment:
+      - TOKEN=YOUR_TELEGRAM_BOT_TOKEN
+      - CHAT_ID=YOUR_TELEGRAM_CHAT_ID
+    volumes:
+      - ./vocab.db:/app/vocab.db
+    restart: unless-stopped
+
+  word_importer:
+    build: .
+    container_name: vocab_importer
+    command: ["python", "import_words.py"]
+    volumes:
+      - ./vocab.db:/app/vocab.db
+      - ./words.csv:/app/words.csv
+    depends_on:
+      - vocab_bot
