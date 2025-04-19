@@ -24,8 +24,7 @@ Which is why this bot exists. So you can send yourself notifications about words
 
 3. clone this repo to get docker-compose-demo.yml file. edit it, put your tokens there. 
 4. Run docker compose up -d, and that should be it. 
-
-
+5. Add new words by adding them to words.csv, and then running `docker compose run --rm word_importer`
 # Thanks
 To chat gpt, and the wonderful library maintaners of Python telegram bot. And ofcourse telegram itself.
 
