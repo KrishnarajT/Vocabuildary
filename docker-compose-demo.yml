@@ -1,6 +1,6 @@
 services:
   vocab_bot:
-    build: .
+    image: krishnaraj/vocab-bot:latest
     container_name: vocab_bot
     environment:
       - TOKEN=your_bot_token_here
@@ -10,7 +10,7 @@ services:
     restart: unless-stopped
 
   word_importer:
-    build: .
+    image: krishnaraj/vocab-bot:latest
     container_name: vocab_importer
     command: ["python", "import_words.py"]
     volumes:
