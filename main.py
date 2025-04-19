@@ -18,6 +18,10 @@ DB_FILE = 'vocab.db'
 
 # in case you dont run with docker. 
 
+
+# create log file if it doesnt exist
+# if not os.path.exists("logs"):
+#     os.makedirs("logs")
 # log_file_path = "logs/bot.log"
 # handler = TimedRotatingFileHandler(log_file_path, when="D", interval=1, backupCount=14)
 # handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
@@ -31,7 +35,6 @@ DB_FILE = 'vocab.db'
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
 
 # Get a random unsent word
 def get_random_unsent_word():
