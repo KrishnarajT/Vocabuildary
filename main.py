@@ -7,6 +7,7 @@ from apscheduler.triggers.cron import CronTrigger
 import sqlite3
 import asyncio
 import random
+from logging.handlers import TimedRotatingFileHandler
 
 # Load .env variables
 load_dotenv()
@@ -15,15 +16,22 @@ TOKEN = os.getenv("TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 DB_FILE = 'vocab.db'
 
-log_file_path = "logs/bot.log"
-handler = TimedRotatingFileHandler(log_file_path, when="D", interval=1, backupCount=14)
-handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+# in case you dont run with docker. 
 
-logging.basicConfig(
-    level=logging.INFO,
-    handlers=[handler]
-)
+# log_file_path = "logs/bot.log"
+# handler = TimedRotatingFileHandler(log_file_path, when="D", interval=1, backupCount=14)
+# handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+
+# logging.basicConfig(
+#     level=logging.INFO,
+#     handlers=[handler]
+# )
+# logger = logging.getLogger(__name__)
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
 
 # Get a random unsent word
 def get_random_unsent_word():
@@ -68,7 +76,7 @@ async def main():
     scheduler = AsyncIOScheduler(timezone="Asia/Kolkata")
 
     # Schedule daily at 9:00 AM
-    scheduler.add_job(send_random_word, trigger=CronTrigger(hour=9, minute=00))
+    scheduler.add_job(send_random_word, trigger=CronTrigger(hour=3, minute=19))
     scheduler.start()
 
     logger.info("Bot started. Will send a word every day at 9:00 AM.")

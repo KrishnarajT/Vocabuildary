@@ -1,0 +1,4 @@
+2025-04-20 03:19:00,005 - apscheduler.executors.default - INFO - Running job "send_random_word (trigger: cron[hour='3', minute='19'], next run at: 2025-04-21 03:19:00 IST)" (scheduled at 2025-04-20 03:19:00+05:30)
+2025-04-20 03:19:00,611 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8013085939:AAFf8F9pNpHuLtjFwyygFY_0DRUs9ySCGRQ/sendMessage "HTTP/1.1 200 OK"
+2025-04-20 03:19:00,613 - __main__ - INFO - Sent word: Solitude
+2025-04-20 03:19:00,617 - apscheduler.executors.default - INFO - Job "send_random_word (trigger: cron[hour='3', minute='19'], next run at: 2025-04-21 03:19:00 IST)" executed successfully
